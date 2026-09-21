@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Los pasados en español — ejercicios</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, serif;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px 14px 100px;
+    background: #fdfaf5;
+    color: #222;
+    line-height: 1.6;
+  }
+  header { text-align: center; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 3px double #8B0000; }
+  header h1 { color: #8B0000; margin: 0 0 5px; font-size: 1.5em; }
+  header p { color: #666; margin: 0; font-style: italic; font-size: 0.9em; }
+
+  .slide {
+    background: #fff;
+    border: 1px solid #e0d8c8;
+    border-radius: 10px;
+    padding: 18px 16px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .slide h2 {
+    color: #2F4F4F;
+    margin-top: 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #eee;
+    font-size: 1.1em;
+  }
+  .hint { color: #777; font-style: italic; font-size: 0.9em; margin-bottom: 14px; }
+  .task { margin: 12px 0; line-height: 2.2; }
+
+  input[type=text] {
+    border: none;
+    border-bottom: 2px solid #999;
+    background: #fafafa;
+    padding: 4px 6px;
+    font-size: 1em;
+    font-family: Georgia, serif;
+    width: 170px;
+    max-width: 90%;
+    transition: all 0.25s;
+  }
+  input[type=text]:focus { outline: none; border-bottom-color: #8B0000; background: #fff8f0; }
+  input.short { width: 160px; }
+  input.long { width: 90%; }
+
+  input.correct { background: #d4f4d4 !important; border-bottom-color: #2e7d32 !important; color: #1b5e20; font-weight: bold; }
+  input.wrong   { background: #ffd6d6 !important; border-bottom-color: #c62828 !important; color: #b71c1c; text-decoration: line-through; }
+
+  .reason { display: block; margin: 6px 0 0 14px; font-size: 0.9em; color: #555; }
+
+  .btn {
+    display: inline-block;
+    background: #8B0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    margin: 4px 3px;
+  }
+  .btn:hover { background: #a83232; }
+  .btn.secondary { background: #555; }
+  .btn.secondary:hover { background: #777; }
+  .btn-group { text-align: center; margin-top: 14px; }
+
+  .score-box {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #2F4F4F;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: center;
+    font-size: 0.95em;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+  .score-box span { font-weight: bold; color: #ffd966; }
+  .reset-note { font-size: 0.8em; color: #ccc; margin-top: 3px; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 0.88em; }
+  table thead tr { background: #2F4F4F; color: #fff; }
+  table th, table td { padding: 7px 6px; }
+  table th:nth-child(2), table th:nth-child(3), table th:nth-child(4),
+  table td:nth-child(2), table td:nth-child(3), table td:nth-child(4) { text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Los pasados en español</h1>
+  <p>Indefinido · Imperfecto · Perfecto · Pluscuamperfecto</p>
+</header>
+
+<!-- ============ SLIDE 1 ============ -->
+<div class="slide" id="slide1">
+  <h2>Слайд 1. Elige el pasado correcto</h2>
+  <p class="hint">Раскройте скобки: <b>Indefinido</b> или <b>Imperfecto</b>.</p>
+
+  <div class="task">1. Ayer Felipe <input type="text" class="short" data-answer="habló|hablo"> (hablar) con su madre por teléfono.</div>
+  <div class="task">2. Cuando era niño, yo <input type="text" class="short" data-answer="vivía|vivia"> (vivir) en un pueblo muy pequeño.</div>
+  <div class="task">3. El año pasado mis amigos <input type="text" class="short" data-answer="fueron"> (ir) de vacaciones a España.</div>
+  <div class="task">4. Siempre <input type="text" class="short" data-answer="comíamos|comiamos"> (comer) paella los domingos en casa de la abuela.</div>
+  <div class="task">5. De repente, <input type="text" class="short" data-answer="empezó|empezo"> (empezar) a llover muy fuerte.</div>
+  <div class="task">6. Mi primera profesora <input type="text" class="short" data-answer="era"> (ser) muy inteligente y amable.</div>
+
+  <div class="btn-group"><button class="btn" onclick="checkSlide('slide1')">Проверить слайд 1</button></div>
+</div>
+
+<!-- ============ SLIDE 2 ============ -->
+<div class="slide" id="slide2">
+  <h2>Слайд 2. Completa y razona</h2>
+  <p class="hint">Раскройте скобки (Indefinido / Imperfecto) и коротко объясните выбор.</p>
+
+  <div class="task">1. El lunes pasado Elena <input type="text" class="short" data-answer="compró|compro"> (comprar) un coche nuevo.
+    <span class="reason">Razón: <input type="text" class="long" data-open="true"></span></div>
+
+  <div class="task">2. Todos los días nosotros <input type="text" class="short" data-answer="caminábamos|caminabamos"> (caminar) por el parque después de la escuela.
+    <span class="reason">Razón: <input type="text" class="long" data-open="true"></span></div>
+
+  <div class="task">3. Mientras mi hermano <input type="text" class="short" data-answer="leía|leia"> (leer) un libro, yo hacía los deberes.
+    <span class="reason">Razón: <input type="text" class="long" data-open="true"></span></div>
+
+  <div class="task">4. Anoche <input type="text" class="short" data-answer="terminé|termine"> (terminar) de leer esta novela a las once.
+    <span class="reason">Razón: <input type="text" class="long" data-open="true"></span></div>
+
+  <div class="btn-group"><button class="btn" onclick="checkSlide('slide2')">Проверить слайд 2</button></div>
+</div>
+
+<!-- ============ SLIDE 3 ============ -->
+<div class="slide" id="slide3">
+  <h2>Слайд 3. El pasado del pasado (Pluscuamperfecto)</h2>
+  <p class="hint">Один глагол — <b>Indefinido</b>, другой — <b>Pluscuamperfecto</b> (случилось раньше).</p>
+
+  <div class="task">1. Cuando yo <input type="text" class="short" data-answer="llegué|llegue"> (llegar) a la estación, el tren ya <input type="text" class="short" data-answer="había salido|habia salido"> (salir).</div>
+  <div class="task">2. Carlos me <input type="text" class="short" data-answer="dijo"> (decir) que ya <input type="text" class="short" data-answer="había visto|habia visto"> (ver) esa película la semana anterior.</div>
+  <div class="task">3. Nosotros no <input type="text" class="short" data-answer="comimos"> (comer) nada en el restaurante porque ya <input type="text" class="short" data-answer="habíamos cenado|habiamos cenado"> (cenar) en casa.</div>
+  <div class="task">4. María <input type="text" class="short" data-answer="compró|compro"> (comprar) el vestido que <input type="text" class="short" data-answer="había mirado|habia mirado"> (mirar) el día anterior.</div>
+
+  <div class="btn-group"><button class="btn" onclick="checkSlide('slide3')">Проверить слайд 3</button></div>
+</div>
+
+<!-- ============ SLIDE 4 ============ -->
+<div class="slide" id="slide4">
+  <h2>Слайд 4. ¿Perfecto o Indefinido?</h2>
+  <p class="hint">Выберите время по маркеру и напишите форму глагола.</p>
+
+  <div class="task">1. Hoy yo <input type="text" class="short" data-answer="he desayunado"> (desayunar) un café con leche. <span class="hint">(Perfecto / Indefinido)</span></div>
+  <div class="task">2. En 2020 nosotros <input type="text" class="short" data-answer="viajamos"> (viajar) a Madrid. <span class="hint">(Perfecto / Indefinido)</span></div>
+  <div class="task">3. Esta semana los chicos <input type="text" class="short" data-answer="han estudiado"> (estudiar) mucho para el examen. <span class="hint">(Perfecto / Indefinido)</span></div>
+  <div class="task">4. Hace dos días Juan <input type="text" class="short" data-answer="perdió|perdio"> (perder) sus llaves. <span class="hint">(Perfecto / Indefinido)</span></div>
+
+  <div class="btn-group"><button class="btn" onclick="checkSlide('slide4')">Проверить слайд 4</button></div>
+</div>
+
+<!-- ============ SLIDE 5 ============ -->
+<div class="slide" id="slide5">
+  <h2>Слайд 5. El gran viaje (все времена)</h2>
+  <p class="hint">Впишите правильную форму. Следите за маркерами и последовательностью.</p>
+
+  <p style="line-height:2.4;">
+    El año pasado yo 1. <input type="text" class="short" data-answer="fui"> (ir) a Italia.
+    2. <input type="text" class="short" data-answer="hacía|hacia"> (hacer) muy buen tiempo y el sol
+    3. <input type="text" class="short" data-answer="brillaba"> (brillar) todos los días.
+    Un día decidí visitar el Coliseo. Cuando llegué, vi que mucha gente
+    4. <input type="text" class="short" data-answer="había comprado|habia comprado"> (comprar) las entradas por internet antes,
+    así que la cola era muy larga. Pero hoy
+    5. <input type="text" class="short" data-answer="he hablado"> (hablar) con mi amiga
+    y me ha dicho que ella también quiere ir este año.
+  </p>
+
+  <div class="btn-group"><button class="btn" onclick="checkSlide('slide5')">Проверить слайд 5</button></div>
+</div>
+
+<!-- ============ SLIDE 6: ANALISIS ============ -->
+<div class="slide" id="slide6" style="display:none;">
+  <h2>📊 Análisis final</h2>
+  <p class="hint">Заполняется автоматически после «Проверить всё».</p>
+  <div id="analysis-content"></div>
+  <table>
+    <thead>
+      <tr><th style="text-align:left;">Тема</th><th>Верно</th><th>Ошибок</th><th>Статус</th></tr>
+    </thead>
+    <tbody id="stats-body">
+      <tr><td colspan="4" style="padding:10px; text-align:center; color:#888;">Пока нет данных</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ GLOBAL BUTTONS ============ -->
+<div class="btn-group">
+  <button class="btn" onclick="checkAll()">✅ Проверить всё</button>
+  <button class="btn secondary" onclick="resetAll()">🔄 Сбросить</button>
+</div>
+
+<!-- ============ SCORE BAR ============ -->
+<div class="score-box">
+  Результат: <span id="score">0 / 0</span>
+  <div class="reset-note">Введите ответы и нажмите «Проверить»</div>
+</div>
+
+<script>
+const TOPIC_MAP = {
+  slide1: 'Indefinido vs Imperfecto (базовое)',
+  slide2: 'Indefinido vs Imperfecto (рассуждение)',
+  slide3: 'Pluscuamperfecto',
+  slide4: 'Perfecto vs Indefinido',
+  slide5: 'Все времена (комплексно)'
+};
+
+function normalize(str) {
+  return str.toLowerCase().trim()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+function checkInput(input) {
+  const raw = input.value.trim();
+  if (raw === '' || input.dataset.open === 'true') return null;
+  const answers = input.dataset.answer.split('|');
+  const userNorm = normalize(raw);
+  const isCorrect = answers.some(a => normalize(a) === userNorm);
+  input.classList.remove('correct', 'wrong');
+  input.classList.add(isCorrect ? 'correct' : 'wrong');
+  return isCorrect;
+}
+
+function checkSlide(slideId) {
+  const slide = document.getElementById(slideId);
+  slide.querySelectorAll('input[type=text]').forEach(checkInput);
+  updateScore();
+  buildAnalysis();
+}
+
+function checkAll() {
+  document.querySelectorAll('input[type=text]').forEach(checkInput);
+  updateScore();
+  buildAnalysis();
+  const s6 = document.getElementById('slide6');
+  if (s6) {
+    s6.style.display = 'block';
+    s6.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function resetAll() {
+  document.querySelectorAll('input[type=text]').forEach(i => {
+    i.value = '';
+    i.classList.remove('correct', 'wrong');
+  });
+  const s6 = document.getElementById('slide6');
+  if (s6) s6.style.display = 'none';
+  document.getElementById('stats-body').innerHTML =
+    '<tr><td colspan="4" style="padding:10px; text-align:center; color:#888;">Пока нет данных</td></tr>';
+  document.getElementById('analysis-content').innerHTML = '';
+  updateScore();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateScore() {
+  const all = [...document.querySelectorAll('input[type=text]')]
+    .filter(i => i.dataset.open !== 'true' && i.dataset.answer);
+  const correct = all.filter(i => i.classList.contains('correct')).length;
+  const answered = all.filter(i => i.classList.contains('correct') || i.classList.contains('wrong')).length;
+  const pct = answered ? Math.round(correct / all.length * 100) : 0;
+  document.getElementById('score').textContent =
+    correct + ' / ' + all.length + (answered ? ' (' + pct + '%)' : '') +
+    (answered < all.length ? ' — проверено не всё' : '');
+}
+
+function buildAnalysis() {
+  const rows = {};
+  Object.keys(TOPIC_MAP).forEach(id => {
+    const slide = document.getElementById(id);
+    if (!slide) return;
+    const inputs = [...slide.querySelectorAll('input[type=text]')]
+      .filter(i => i.dataset.open !== 'true' && i.dataset.answer);
+    const checked = inputs.filter(i => i.classList.contains('correct') || i.classList.contains('wrong'));
+    if (checked.length === 0) return;
+    const correct = checked.filter(i => i.classList.contains('correct')).length;
+    rows[TOPIC_MAP[id]] = { correct, wrong: checked.length - correct, total: checked.length };
+  });
+
+  const tbody = document.getElementById('stats-body');
+  tbody.innerHTML = '';
+  let worstTopic = null, worstRate = 1;
+
+  Object.entries(rows).forEach(([topic, r]) => {
+    const rate = r.correct / r.total;
+    let status, color;
+    if (rate === 1)       { status = '✅ Отлично';   color = '#2e7d32'; }
+    else if (rate >= 0.7) { status = '🟡 Хорошо';    color = '#f57f17'; }
+    else if (rate >= 0.4) { status = '🟠 Повторить'; color = '#e65100'; }
+    else                  { status = '🔴 Слабо';     color = '#c62828'; }
+    if (rate < worstRate) { worstRate = rate; worstTopic = topic; }
+
+    const tr = document.createElement('tr');
+    tr.style.borderBottom = '1px solid #eee';
+    tr.innerHTML = `
+      <td>${topic}</td>
+      <td style="color:#2e7d32; font-weight:bold;">${r.correct}</td>
+      <td style="color:#c62828; font-weight:bold;">${r.wrong}</td>
+      <td style="color:${color}; font-weight:bold;">${status}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  const box = document.getElementById('analysis-content');
+  const totalCorrect = Object.values(rows).reduce((s, r) => s + r.correct, 0);
+  const totalAll = Object.values(rows).reduce((s, r) => s + r.total, 0);
+  if (totalAll === 0) { box.innerHTML = ''; return; }
+
+  const globalPct = Math.round(totalCorrect / totalAll * 100);
+  let advice = '';
+  if (globalPct >= 90)      advice = '🎉 Отличный результат! Ты уверенно различаешь все времена.';
+  else if (globalPct >= 70) advice = '👍 Хорошая работа. Осталось отшлифовать пару тем.';
+  else if (globalPct >= 50) advice = '💪 Есть база, но нужно повторить ключевые правила.';
+  else                      advice = '📚 Стоит вернуться к теории и разобрать маркеры времени.';
+
+  let focus = '';
+  if (worstTopic && worstRate < 1) {
+    focus = `<p style="margin-top:8px;"><b>Слабое место:</b> ${worstTopic}. Перечитай правило и сделай этот блок ещё раз.</p>`;
+  }
+
+  box.innerHTML = `
+    <div style="background:#f5f5f5; padding:14px; border-left:4px solid #8B0000; border-radius:5px;">
+      <p style="margin:0; font-size:1em;"><b>Общий результат: ${totalCorrect} / ${totalAll} (${globalPct}%)</b></p>
+      <p style="margin:6px 0 0;">${advice}</p>
+      ${focus}
+    </div>`;
+}
+
+document.querySelectorAll('.slide').forEach(slide => {
+  slide.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); checkSlide(slide.id); }
+  });
+});
+</script>
+
+</body>
+</html>
